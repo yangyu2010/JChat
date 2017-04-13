@@ -22,7 +22,8 @@
 
 import UIKit
 
-fileprivate let kChatTableViewCellID = "kChatTableViewCellID"
+fileprivate let kChatTableViewLeftCellID = "kChatTableViewLeftCellID"
+fileprivate let kChatTableViewRightCellID = "kChatTableViewRightCellID"
 
 class ChatViewController: UIViewController {
 
@@ -35,7 +36,8 @@ class ChatViewController: UIViewController {
     fileprivate lazy var messageTable : UITableView = {
         let messageTable = UITableView(frame: self.view.bounds, style: .plain)
         messageTable.dataSource = self
-        messageTable.register(UINib(nibName: "ChatLeftTableViewCell", bundle: nil), forCellReuseIdentifier: kChatTableViewCellID)
+        messageTable.register(UINib(nibName: "ChatLeftTableViewCell", bundle: nil), forCellReuseIdentifier: kChatTableViewLeftCellID)
+        messageTable.register(UINib(nibName: "ChatRightTableViewCell", bundle: nil), forCellReuseIdentifier: kChatTableViewRightCellID)
         messageTable.separatorStyle = .none
         return messageTable
     }()
@@ -83,10 +85,22 @@ extension ChatViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewCellID, for: indexPath) as! ChatLeftTableViewCell
-        cell.message = messagesArr[indexPath.item];
-
-        return cell
+        
+        let message = messagesArr[indexPath.item]
+        if message.isReceived {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewLeftCellID, for: indexPath) as! ChatLeftTableViewCell
+            cell.message = message
+            return cell
+            
+        }else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewRightCellID, for: indexPath) as! ChatRightTableViewCell
+            cell.message = message
+            return cell
+        }
+        
+        
     }
 }
 
