@@ -1,0 +1,22 @@
+PODS:
+  - JCore (1.1.2)
+  - JMessage (3.1.0):
+    - JCore (~> 1.1.1)
+  - JPush (3.0.3):
+    - JCore (~> 1.1.1)
+  - SVProgressHUD (2.1.2)
+
+DEPENDENCIES:
+  - JMessage
+  - JPush
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  JCore: 9e9bd280a38090d66aca0a7547581cd29804c6eb
+  JMessage: bf064b52fab7dc197e849547a2e3bd41a8d1a9d4
+  JPush: 8ea7c5bee363191cb5214f5d34ae11e1c5494722
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+
+PODFILE CHECKSUM: 7e079e25a1160667b2370a5f63fa0948374318df
+
+COCOAPODS: 1.2.1.beta.1
