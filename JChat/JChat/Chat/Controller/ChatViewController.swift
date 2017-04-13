@@ -21,25 +21,39 @@
  */
 
 import UIKit
+import SnapKit
+import Sugar
 
 fileprivate let kChatTableViewLeftCellID = "kChatTableViewLeftCellID"
 fileprivate let kChatTableViewRightCellID = "kChatTableViewRightCellID"
 
 class ChatViewController: UIViewController {
 
-    // 当前聊天的会话
+    /// 当前聊天的会话
     var conversation : JMSGConversation!
     
-    // 整个消息数组
+    /// 整个消息数组
     fileprivate lazy var messagesArr : [JMSGMessage] = [JMSGMessage]()
     
+    /// table
     fileprivate lazy var messageTable : UITableView = {
-        let messageTable = UITableView(frame: self.view.bounds, style: .plain)
+        let frame = CGRect(x: 0, y: 0, width: kScreen_Width, height: kScreen_Height - kTabBar_Height)
+        let messageTable = UITableView(frame: frame, style: .plain)
         messageTable.dataSource = self
         messageTable.register(UINib(nibName: "ChatLeftTableViewCell", bundle: nil), forCellReuseIdentifier: kChatTableViewLeftCellID)
         messageTable.register(UINib(nibName: "ChatRightTableViewCell", bundle: nil), forCellReuseIdentifier: kChatTableViewRightCellID)
         messageTable.separatorStyle = .none
+        messageTable.rowHeight = UITableViewAutomaticDimension
+        messageTable.estimatedRowHeight = 150.0
+        messageTable.backgroundColor = kDefault_BackgroundColor
         return messageTable
+    }()
+    
+    /// input
+    fileprivate lazy var chatInputView : ChatInputView = {
+        let chatInputView = ChatInputView.creatView()
+        chatInputView.frame = CGRect(x: 0, y: self.messageTable.frame.maxY, width: kScreen_Width, height: kTabBar_Height)
+        return chatInputView
     }()
     
     override func viewDidLoad() {
@@ -47,9 +61,15 @@ class ChatViewController: UIViewController {
 
         setupUI()
         getPageMessage()
+        
+        // 直接发送文字消息
+        //JMSGMessage.sendSingleTextMessage("呵呵哈哈哈看花见花开很看好看很好好看", toUser: "test3")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(note:)), name: .UIKeyboardWillChangeFrame, object: nil)
     }
 
 }
+
 
 // MARK: ui 
 extension ChatViewController {
@@ -58,8 +78,23 @@ extension ChatViewController {
     
         view.backgroundColor = .white
         view.addSubview(messageTable)
-        messageTable.rowHeight = UITableViewAutomaticDimension
-        messageTable.estimatedRowHeight = 150.0
+        view.addSubview(chatInputView)
+//        view.backgroundColor = kDefault_BackgroundColor
+    }
+}
+
+extension ChatViewController {
+
+    @objc fileprivate func keyboardWillChangeFrame(note : NSNotification) {
+        
+        let dict = note.userInfo!
+        
+        let duration =  dict[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
+        let endFrame = (dict[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+
+        UIView.animate(withDuration: duration) {
+            self.chatInputView.y = endFrame.origin.y - kTabBar_Height
+        }
         
     }
 }

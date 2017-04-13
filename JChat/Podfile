@@ -9,4 +9,7 @@ target 'JChat' do
   pod 'JMessage'
   pod 'JPush'
   pod 'SVProgressHUD'
+  pod 'SnapKit'
+  pod 'Sugar'
+  
 end

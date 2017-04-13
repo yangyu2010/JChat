@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860617B51E9F590300F9CFD4 /* ChatBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860617B41E9F590300F9CFD4 /* ChatBaseCell.swift */; };
+		860617B81E9F60D900F9CFD4 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860617B71E9F60D900F9CFD4 /* ChatInputView.swift */; };
+		860617BA1E9F611F00F9CFD4 /* ChatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 860617B91E9F611F00F9CFD4 /* ChatInputView.xib */; };
+		860617BC1E9F656A00F9CFD4 /* ChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860617BB1E9F656A00F9CFD4 /* ChatTextView.swift */; };
 		860AD7851E9CA55F00A8E01B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD7841E9CA55F00A8E01B /* AppDelegate.swift */; };
 		860AD7871E9CA55F00A8E01B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD7861E9CA55F00A8E01B /* ViewController.swift */; };
 		860AD78A1E9CA55F00A8E01B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 860AD7881E9CA55F00A8E01B /* Main.storyboard */; };
@@ -41,6 +45,10 @@
 
 /* Begin PBXFileReference section */
 		4B0E12C6C518D3075C1DABEA /* Pods-JChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-JChat/Pods-JChat.release.xcconfig"; sourceTree = "<group>"; };
+		860617B41E9F590300F9CFD4 /* ChatBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBaseCell.swift; sourceTree = "<group>"; };
+		860617B71E9F60D900F9CFD4 /* ChatInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		860617B91E9F611F00F9CFD4 /* ChatInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatInputView.xib; sourceTree = "<group>"; };
+		860617BB1E9F656A00F9CFD4 /* ChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextView.swift; sourceTree = "<group>"; };
 		860AD7811E9CA55F00A8E01B /* JChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		860AD7841E9CA55F00A8E01B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		860AD7861E9CA55F00A8E01B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +114,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		860617B31E9F58E900F9CFD4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				860617B41E9F590300F9CFD4 /* ChatBaseCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		860617B61E9F60A300F9CFD4 /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				860617B71E9F60D900F9CFD4 /* ChatInputView.swift */,
+				860617B91E9F611F00F9CFD4 /* ChatInputView.xib */,
+				860617BB1E9F656A00F9CFD4 /* ChatTextView.swift */,
+			);
+			path = InputView;
+			sourceTree = "<group>";
+		};
 		860AD7781E9CA55F00A8E01B = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +176,8 @@
 				86B844271E9CD91900EDDC18 /* Controller */,
 				86B844291E9CD91900EDDC18 /* Model */,
 				86B8442A1E9CD91900EDDC18 /* View */,
+				860617B31E9F58E900F9CFD4 /* Base */,
+				860617B61E9F60A300F9CFD4 /* InputView */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -318,6 +346,7 @@
 				86DF6F341E9CC369000745E4 /* 161024214104.jpg in Resources */,
 				860AD78C1E9CA55F00A8E01B /* Assets.xcassets in Resources */,
 				86B844491E9CDC2600EDDC18 /* RecycleHeaderView.xib in Resources */,
+				860617BA1E9F611F00F9CFD4 /* ChatInputView.xib in Resources */,
 				86B844501E9CDD7800EDDC18 /* MessageListCell.xib in Resources */,
 				86FF71E11E9F4D4F00EF945A /* ChatRightTableViewCell.xib in Resources */,
 				86B8444B1E9CDC2600EDDC18 /* RecycleViewCell.xib in Resources */,
@@ -384,6 +413,7 @@
 				86B844481E9CDC2600EDDC18 /* RecycleHeaderView.swift in Sources */,
 				867F60211E9DDEDC003FC8DB /* NSString+Utilites.swift in Sources */,
 				860AD7871E9CA55F00A8E01B /* ViewController.swift in Sources */,
+				860617BC1E9F656A00F9CFD4 /* ChatTextView.swift in Sources */,
 				86FF71DC1E9F18F600EF945A /* ChatLeftTableViewCell.swift in Sources */,
 				86B8444F1E9CDD7800EDDC18 /* MessageListCell.swift in Sources */,
 				86B8442B1E9CD91900EDDC18 /* ChatViewController.swift in Sources */,
@@ -396,6 +426,8 @@
 				867F601F1E9DD9EB003FC8DB /* NSDate-Extension.swift in Sources */,
 				86B844311E9CD94C00EDDC18 /* MessageListController.swift in Sources */,
 				86B844431E9CDC2600EDDC18 /* UIBarButtonItem-Extension.swift in Sources */,
+				860617B51E9F590300F9CFD4 /* ChatBaseCell.swift in Sources */,
+				860617B81E9F60D900F9CFD4 /* ChatInputView.swift in Sources */,
 				86B844461E9CDC2600EDDC18 /* Common.swift in Sources */,
 				86B844441E9CDC2600EDDC18 /* UIButton-Extension.swift in Sources */,
 				86B8444A1E9CDC2600EDDC18 /* RecycleViewCell.swift in Sources */,

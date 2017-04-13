@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
        
-        JMSGUser.login(withUsername: "root", password: "123456") { (resultObject, error) in
+        JMSGUser.login(withUsername: "test1", password: "123456") { (resultObject, error) in
             
             if (error == nil) {
                 print("登录成功")
@@ -56,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error ?? "失败了")
             }
         }
+        
+        JMessage.setLogOFF()
         
         return true
     }
