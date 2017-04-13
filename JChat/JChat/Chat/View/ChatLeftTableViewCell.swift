@@ -37,6 +37,7 @@ class ChatLeftTableViewCell: UITableViewCell {
                 messageLab.text = content.text
             }
             
+            //backgroundColor = UIColor.randomColor()
         }
     }
 }
