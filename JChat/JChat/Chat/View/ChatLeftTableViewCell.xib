@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_sq" translatesAutoresizingMaskIntoConstraints="NO" id="y9c-xO-D4Q">
-                        <rect key="frame" x="15" y="15" width="50" height="50"/>
+                        <rect key="frame" x="15" y="18" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="7d4-ne-kPL"/>
                             <constraint firstAttribute="height" constant="50" id="IfO-l8-f4t"/>
@@ -30,23 +30,32 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWM-ga-411">
-                        <rect key="frame" x="75" y="20" width="36" height="17"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_left" translatesAutoresizingMaskIntoConstraints="NO" id="7jo-9p-aJP">
+                        <rect key="frame" x="69" y="23" width="178" height="40"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你好,有什么可以帮您的?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWM-ga-411">
+                        <rect key="frame" x="85" y="31" width="154" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="R2I-MR-I2B"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="y9c-xO-D4Q" secondAttribute="bottom" constant="15" id="Fvo-dT-fS8"/>
-                    <constraint firstItem="kWM-ga-411" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="LYc-RM-F4m"/>
+                    <constraint firstItem="kWM-ga-411" firstAttribute="bottom" secondItem="7jo-9p-aJP" secondAttribute="bottom" constant="-8" id="84d-9N-qYg"/>
+                    <constraint firstItem="kWM-ga-411" firstAttribute="trailing" secondItem="7jo-9p-aJP" secondAttribute="trailing" constant="-8" id="Im1-ei-uGY"/>
                     <constraint firstItem="y9c-xO-D4Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Lg3-dV-Rm3"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kWM-ga-411" secondAttribute="bottom" id="MVk-BM-mJt"/>
-                    <constraint firstItem="y9c-xO-D4Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Wxt-Qe-c92"/>
-                    <constraint firstItem="kWM-ga-411" firstAttribute="leading" secondItem="y9c-xO-D4Q" secondAttribute="trailing" constant="10" id="pXT-5V-GBg"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kWM-ga-411" secondAttribute="bottom" constant="8" id="MVk-BM-mJt"/>
+                    <constraint firstItem="y9c-xO-D4Q" firstAttribute="centerY" secondItem="kWM-ga-411" secondAttribute="centerY" id="MqO-ea-c3b"/>
+                    <constraint firstItem="kWM-ga-411" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Pdg-pt-gK9"/>
+                    <constraint firstItem="y9c-xO-D4Q" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Q9l-uo-UNm"/>
+                    <constraint firstItem="kWM-ga-411" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XaK-vU-S0F"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="y9c-xO-D4Q" secondAttribute="bottom" constant="10" id="lhu-wP-VES"/>
+                    <constraint firstItem="kWM-ga-411" firstAttribute="leading" secondItem="y9c-xO-D4Q" secondAttribute="trailing" constant="20" id="pXT-5V-GBg"/>
+                    <constraint firstItem="kWM-ga-411" firstAttribute="top" secondItem="7jo-9p-aJP" secondAttribute="top" constant="8" id="sbF-8d-qq4"/>
+                    <constraint firstItem="kWM-ga-411" firstAttribute="leading" secondItem="7jo-9p-aJP" secondAttribute="leading" constant="16" id="yAf-3A-FgD"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -57,6 +66,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="message_left" width="17" height="40"/>
         <image name="placeholder_sq" width="100" height="100"/>
     </resources>
 </document>
