@@ -24,6 +24,7 @@ import UIKit
 import SnapKit
 import Sugar
 import IQKeyboardManagerSwift
+import TZImagePickerController
 
 fileprivate let kChatTableViewLeftCellID = "kChatTableViewLeftCellID"
 fileprivate let kChatTableViewRightCellID = "kChatTableViewRightCellID"
@@ -67,7 +68,7 @@ class ChatViewController: UIViewController {
     fileprivate lazy var moreView : ChatMoreView = {
         let rect = CGRect(x: 0, y: kScreen_Height, width: kScreen_Width, height: kMoreViewHeight)
         let moreView = ChatMoreView(frame: rect)
-        
+        moreView.delegate = self
         return moreView
     }()
     
@@ -166,14 +167,6 @@ extension ChatViewController {
     }
 }
 
-extension ChatViewController : ChatInputViewDelegate {
-    func chatInputViewAction(_ inputView: ChatInputView, actionType: ChatInputViewActionType, isUP: Bool) {
-        if actionType == .add {
-            inputViewChangedFrame(isUP: isUP)
-        }
-    }
-
-}
 
 // MARK: 数据
 extension ChatViewController {
@@ -216,6 +209,34 @@ extension ChatViewController : UITableViewDataSource {
     }
 }
 
+// MARK: 输入框代理
+extension ChatViewController : ChatInputViewDelegate {
+    func chatInputViewAction(_ inputView: ChatInputView, actionType: ChatInputViewActionType, isUP: Bool) {
+        if actionType == .add {
+            inputViewChangedFrame(isUP: isUP)
+        }
+    }
+    
+}
 
+// MARK: moreView代理
+extension ChatViewController : ChatMoreViewDelegate {
+
+    func chatMoreViewClick(_ moreView: ChatMoreView, type: ChatMoreViewActionType) {
+        if type == .photo {
+            let picker = TZImagePickerController(maxImagesCount: 9, columnNumber: 3, delegate: self)
+            present(picker!, animated: true, completion: nil)
+            
+        }
+    }
+}
+
+extension ChatViewController : TZImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool) {
+        
+    }
+
+}
 
 
