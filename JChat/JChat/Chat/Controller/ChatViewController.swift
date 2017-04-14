@@ -26,6 +26,8 @@ import Sugar
 
 fileprivate let kChatTableViewLeftCellID = "kChatTableViewLeftCellID"
 fileprivate let kChatTableViewRightCellID = "kChatTableViewRightCellID"
+fileprivate let kMoreViewHeight : CGFloat = 80
+fileprivate let kFrameChangeDuration : TimeInterval = 0.25
 
 class ChatViewController: UIViewController {
 
@@ -53,7 +55,16 @@ class ChatViewController: UIViewController {
     fileprivate lazy var chatInputView : ChatInputView = {
         let chatInputView = ChatInputView.creatView()
         chatInputView.frame = CGRect(x: 0, y: self.messageTable.frame.maxY, width: kScreen_Width, height: kTabBar_Height)
+        chatInputView.delegate = self
         return chatInputView
+    }()
+    
+    //footer
+    fileprivate lazy var moreView : ChatMoreView = {
+        let rect = CGRect(x: 0, y: kScreen_Height, width: kScreen_Width, height: kMoreViewHeight)
+        let moreView = ChatMoreView(frame: rect)
+        
+        return moreView
     }()
     
     override func viewDidLoad() {
@@ -79,24 +90,55 @@ extension ChatViewController {
         view.backgroundColor = .white
         view.addSubview(messageTable)
         view.addSubview(chatInputView)
-//        view.backgroundColor = kDefault_BackgroundColor
+        view.addSubview(moreView)
+        
+        view.backgroundColor = kDefault_BackgroundColor
     }
 }
 
+// MARK: method
 extension ChatViewController {
 
     @objc fileprivate func keyboardWillChangeFrame(note : NSNotification) {
         
         let dict = note.userInfo!
-        
         let duration =  dict[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
         let endFrame = (dict[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-
+        //偏移输入框和table
         UIView.animate(withDuration: duration) {
             self.chatInputView.y = endFrame.origin.y - kTabBar_Height
+            self.messageTable.y = -kScreen_Height + endFrame.origin.y
         }
         
+        //inputViewChangedFrame(isUP: false)
     }
+    
+    fileprivate func inputViewChangedFrame(isUP : Bool) {
+        
+        UIView.animate(withDuration: kFrameChangeDuration) {
+            if isUP {
+                //升
+                self.chatInputView.y = kScreen_Height - kTabBar_Height - kMoreViewHeight
+                self.moreView.y = kScreen_Height - kMoreViewHeight
+                self.messageTable.y =  -kMoreViewHeight
+            }else {
+                //降
+                self.chatInputView.y = kScreen_Height - kTabBar_Height
+                self.moreView.y = kScreen_Height
+                self.messageTable.y = 0
+            }
+ 
+        }
+    }
+}
+
+extension ChatViewController : ChatInputViewDelegate {
+    func chatInputViewAction(_ inputView: ChatInputView, actionType: ChatInputViewActionType, isUP: Bool) {
+        if actionType == .add {
+            inputViewChangedFrame(isUP: isUP)
+        }
+    }
+
 }
 
 // MARK: 数据
@@ -109,6 +151,7 @@ extension ChatViewController {
         self.messagesArr += messagesArr
         
         messageTable.reloadData()
+        
     }
 }
 

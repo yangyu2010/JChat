@@ -21,6 +21,8 @@
                         <constraint firstAttribute="height" constant="49" id="bWt-vh-Jdm"/>
                     </constraints>
                     <state key="normal" image="message_add"/>
+                    <state key="selected" image="message_add_h"/>
+                    <state key="highlighted" image="message_add_h"/>
                     <connections>
                         <action selector="addClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="tgJ-3m-Qlx"/>
                     </connections>
@@ -43,6 +45,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="addBtn" destination="8tC-cg-5Z9" id="1PZ-UM-AvB"/>
                 <outlet property="textView" destination="uJg-7v-OB4" id="d1u-8w-4Tu"/>
             </connections>
             <point key="canvasLocation" x="12.5" y="-55.5"/>
@@ -50,5 +53,6 @@
     </objects>
     <resources>
         <image name="message_add" width="30" height="30"/>
+        <image name="message_add_h" width="30" height="30"/>
     </resources>
 </document>

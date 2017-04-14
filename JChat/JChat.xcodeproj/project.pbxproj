@@ -19,6 +19,10 @@
 		867F601F1E9DD9EB003FC8DB /* NSDate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867F601E1E9DD9EB003FC8DB /* NSDate-Extension.swift */; };
 		867F60211E9DDEDC003FC8DB /* NSString+Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867F60201E9DDEDC003FC8DB /* NSString+Utilites.swift */; };
 		867F60231E9DDF42003FC8DB /* NSDate+Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867F60221E9DDF42003FC8DB /* NSDate+Utilites.swift */; };
+		86B661931EA0654F00AAEA55 /* ChatMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B661921EA0654F00AAEA55 /* ChatMoreView.swift */; };
+		86B661961EA0665200AAEA55 /* ChatMoreViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B661941EA0665200AAEA55 /* ChatMoreViewCell.swift */; };
+		86B661971EA0665200AAEA55 /* ChatMoreViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B661951EA0665200AAEA55 /* ChatMoreViewCell.xib */; };
+		86B661991EA067EA00AAEA55 /* ChatMoreVIewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B661981EA067EA00AAEA55 /* ChatMoreVIewDataSource.swift */; };
 		86B8442B1E9CD91900EDDC18 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B844281E9CD91900EDDC18 /* ChatViewController.swift */; };
 		86B844311E9CD94C00EDDC18 /* MessageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B844301E9CD94C00EDDC18 /* MessageListController.swift */; };
 		86B844411E9CDC2600EDDC18 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B844331E9CDC2600EDDC18 /* SearchBar.swift */; };
@@ -61,6 +65,10 @@
 		867F601E1E9DD9EB003FC8DB /* NSDate-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate-Extension.swift"; sourceTree = "<group>"; };
 		867F60201E9DDEDC003FC8DB /* NSString+Utilites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Utilites.swift"; sourceTree = "<group>"; };
 		867F60221E9DDF42003FC8DB /* NSDate+Utilites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utilites.swift"; sourceTree = "<group>"; };
+		86B661921EA0654F00AAEA55 /* ChatMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMoreView.swift; sourceTree = "<group>"; };
+		86B661941EA0665200AAEA55 /* ChatMoreViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMoreViewCell.swift; sourceTree = "<group>"; };
+		86B661951EA0665200AAEA55 /* ChatMoreViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMoreViewCell.xib; sourceTree = "<group>"; };
+		86B661981EA067EA00AAEA55 /* ChatMoreVIewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMoreVIewDataSource.swift; sourceTree = "<group>"; };
 		86B844281E9CD91900EDDC18 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		86B844301E9CD94C00EDDC18 /* MessageListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListController.swift; sourceTree = "<group>"; };
 		86B844331E9CDC2600EDDC18 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -178,8 +186,20 @@
 				86B8442A1E9CD91900EDDC18 /* View */,
 				860617B31E9F58E900F9CFD4 /* Base */,
 				860617B61E9F60A300F9CFD4 /* InputView */,
+				86B661911EA0653000AAEA55 /* MoreView */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		86B661911EA0653000AAEA55 /* MoreView */ = {
+			isa = PBXGroup;
+			children = (
+				86B661921EA0654F00AAEA55 /* ChatMoreView.swift */,
+				86B661941EA0665200AAEA55 /* ChatMoreViewCell.swift */,
+				86B661951EA0665200AAEA55 /* ChatMoreViewCell.xib */,
+				86B661981EA067EA00AAEA55 /* ChatMoreVIewDataSource.swift */,
+			);
+			path = MoreView;
 			sourceTree = "<group>";
 		};
 		86B844271E9CD91900EDDC18 /* Controller */ = {
@@ -347,6 +367,7 @@
 				860AD78C1E9CA55F00A8E01B /* Assets.xcassets in Resources */,
 				86B844491E9CDC2600EDDC18 /* RecycleHeaderView.xib in Resources */,
 				860617BA1E9F611F00F9CFD4 /* ChatInputView.xib in Resources */,
+				86B661971EA0665200AAEA55 /* ChatMoreViewCell.xib in Resources */,
 				86B844501E9CDD7800EDDC18 /* MessageListCell.xib in Resources */,
 				86FF71E11E9F4D4F00EF945A /* ChatRightTableViewCell.xib in Resources */,
 				86B8444B1E9CDC2600EDDC18 /* RecycleViewCell.xib in Resources */,
@@ -416,11 +437,14 @@
 				860617BC1E9F656A00F9CFD4 /* ChatTextView.swift in Sources */,
 				86FF71DC1E9F18F600EF945A /* ChatLeftTableViewCell.swift in Sources */,
 				86B8444F1E9CDD7800EDDC18 /* MessageListCell.swift in Sources */,
+				86B661961EA0665200AAEA55 /* ChatMoreViewCell.swift in Sources */,
 				86B8442B1E9CD91900EDDC18 /* ChatViewController.swift in Sources */,
 				86B844421E9CDC2600EDDC18 /* String-Extension.swift in Sources */,
 				86FF71E01E9F4D4F00EF945A /* ChatRightTableViewCell.swift in Sources */,
 				86B8444C1E9CDC2600EDDC18 /* YYTitleView.swift in Sources */,
+				86B661931EA0654F00AAEA55 /* ChatMoreView.swift in Sources */,
 				86B844411E9CDC2600EDDC18 /* SearchBar.swift in Sources */,
+				86B661991EA067EA00AAEA55 /* ChatMoreVIewDataSource.swift in Sources */,
 				86B844451E9CDC2600EDDC18 /* UIColor-Extension.swift in Sources */,
 				860AD7851E9CA55F00A8E01B /* AppDelegate.swift in Sources */,
 				867F601F1E9DD9EB003FC8DB /* NSDate-Extension.swift in Sources */,
