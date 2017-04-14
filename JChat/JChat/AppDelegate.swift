@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import IQKeyboardManagerSwift
 
 private let kApp_key = "1ea152807d53383bc00cafe1"
 private let kApp_channel = ""
@@ -20,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        JMessage.setLogOFF()
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        IQKeyboardManager.sharedManager().shouldShowTextFieldPlaceholder = false
+        
         JMessage.setupJMessage(launchOptions,
                                appKey: kApp_key,
                                channel: kApp_channel,
@@ -57,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        JMessage.setLogOFF()
+        
         
         return true
     }

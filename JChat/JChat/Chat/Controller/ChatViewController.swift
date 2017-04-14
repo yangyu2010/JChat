@@ -34,6 +34,9 @@ class ChatViewController: UIViewController {
     /// 当前聊天的会话
     var conversation : JMSGConversation!
     
+    /// 记录键盘是否是上升
+    fileprivate lazy var keyboardIsUP : Bool = false
+    
     /// 整个消息数组
     fileprivate lazy var messagesArr : [JMSGMessage] = [JMSGMessage]()
     
@@ -76,7 +79,8 @@ class ChatViewController: UIViewController {
         // 直接发送文字消息
         //JMSGMessage.sendSingleTextMessage("呵呵哈哈哈看花见花开很看好看很好好看", toUser: "test3")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(note:)), name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+        
     }
 
 }
@@ -99,29 +103,27 @@ extension ChatViewController {
 // MARK: method
 extension ChatViewController {
 
-    @objc fileprivate func keyboardWillChangeFrame(note : NSNotification) {
-        
-        let dict = note.userInfo!
-        let duration =  dict[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-        let endFrame = (dict[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        //偏移输入框和table
-        UIView.animate(withDuration: duration) {
-            self.chatInputView.y = endFrame.origin.y - kTabBar_Height
-            self.messageTable.y = -kScreen_Height + endFrame.origin.y
+    @objc fileprivate func keyboardDidShow() {
+       
+        if chatInputView.addBtn.isSelected {
+            chatInputView.addBtn.isSelected = false
+            inputViewChangedFrame(isUP: false)
         }
-        
-        //inputViewChangedFrame(isUP: false)
     }
     
     fileprivate func inputViewChangedFrame(isUP : Bool) {
         
         UIView.animate(withDuration: kFrameChangeDuration) {
             if isUP {
+                
+                self.chatInputView.textView.resignFirstResponder()
+                
                 //升
                 self.chatInputView.y = kScreen_Height - kTabBar_Height - kMoreViewHeight
                 self.moreView.y = kScreen_Height - kMoreViewHeight
                 self.messageTable.y =  -kMoreViewHeight
             }else {
+                
                 //降
                 self.chatInputView.y = kScreen_Height - kTabBar_Height
                 self.moreView.y = kScreen_Height

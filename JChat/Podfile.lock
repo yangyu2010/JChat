@@ -1,4 +1,5 @@
 PODS:
+  - IQKeyboardManagerSwift (4.0.9)
   - JCore (1.1.2)
   - JMessage (3.1.0):
     - JCore (~> 1.1.1)
@@ -9,6 +10,7 @@ PODS:
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift
   - JMessage
   - JPush
   - SnapKit
@@ -16,6 +18,7 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
   JCore: 9e9bd280a38090d66aca0a7547581cd29804c6eb
   JMessage: bf064b52fab7dc197e849547a2e3bd41a8d1a9d4
   JPush: 8ea7c5bee363191cb5214f5d34ae11e1c5494722
@@ -23,6 +26,6 @@ SPEC CHECKSUMS:
   Sugar: e2eb40928c2589bf55977e335a5bc183d09cce24
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 32a89d47dbeae613c29c8c1cb306d89b1f95f5e6
+PODFILE CHECKSUM: ba48da87843961499222f841f2c87a6b3cb8aa4c
 
 COCOAPODS: 1.2.1.beta.1
