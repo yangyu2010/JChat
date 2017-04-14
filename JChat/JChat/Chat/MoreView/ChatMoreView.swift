@@ -84,7 +84,11 @@ extension ChatMoreView : UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        delegate?.chatMoreViewClick(self, type: .photo)
+        if indexPath.item == 0 {
+            delegate?.chatMoreViewClick(self, type: .photo)
+        }else if indexPath.item == 1 {
+            delegate?.chatMoreViewClick(self, type: .camera)
+        }
         
     }
 }

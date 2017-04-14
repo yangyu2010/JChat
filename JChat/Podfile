@@ -12,7 +12,5 @@ target 'JChat' do
   pod 'SnapKit'
   pod 'Sugar'
   pod 'IQKeyboardManagerSwift'
-  pod 'TZImagePickerController'
-  pod 'SKPhotoBrowser'
-  
+
 end

@@ -5,33 +5,27 @@ PODS:
     - JCore (~> 1.1.1)
   - JPush (3.0.3):
     - JCore (~> 1.1.1)
-  - SKPhotoBrowser (4.0.1)
   - SnapKit (3.2.0)
   - Sugar (3.1.2)
   - SVProgressHUD (2.1.2)
-  - TZImagePickerController (1.7.9)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - JMessage
   - JPush
-  - SKPhotoBrowser
   - SnapKit
   - Sugar
   - SVProgressHUD
-  - TZImagePickerController
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
   JCore: 9e9bd280a38090d66aca0a7547581cd29804c6eb
   JMessage: bf064b52fab7dc197e849547a2e3bd41a8d1a9d4
   JPush: 8ea7c5bee363191cb5214f5d34ae11e1c5494722
-  SKPhotoBrowser: 3a7c6fc02aa1620ab17253a47a49fafda46536e8
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Sugar: e2eb40928c2589bf55977e335a5bc183d09cce24
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  TZImagePickerController: 0a8ff228d287ebdd7d485e8c42a2a932894f1fba
 
-PODFILE CHECKSUM: 94e13c3dd323c0f57dcd8d8949287ddbf069ecec
+PODFILE CHECKSUM: 105f4aa56a54c964178de1f1acb4672092300b58
 
 COCOAPODS: 1.2.1.beta.1

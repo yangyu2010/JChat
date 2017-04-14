@@ -43,8 +43,10 @@ extension ChatInputView : UITextViewDelegate {
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text as NSString).isEqual(to: "\n") {
-            print("发送按钮")
-            delegate?.chatInputViewAction(self, actionType: .send, isUP: false)
+            if textView.text != "" {
+                delegate?.chatInputViewAction(self, actionType: .send, isUP: false)
+                textView.text = ""
+            }
             return false
         }
         return true

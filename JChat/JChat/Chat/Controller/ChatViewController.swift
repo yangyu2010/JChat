@@ -24,7 +24,6 @@ import UIKit
 import SnapKit
 import Sugar
 import IQKeyboardManagerSwift
-import TZImagePickerController
 
 fileprivate let kChatTableViewLeftCellID = "kChatTableViewLeftCellID"
 fileprivate let kChatTableViewRightCellID = "kChatTableViewRightCellID"
@@ -75,14 +74,17 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /// 设置ui
         setupUI()
+        
+        /// 添加通知
+        addNotification()
+        
+        /// 监听会话
+        JMessage.add(self, with: self.conversation)
+        
+        /// 请求数据
         getPageMessage()
-        
-        // 直接发送文字消息
-        //JMSGMessage.sendSingleTextMessage("呵呵哈哈哈看花见花开很看好看很好好看", toUser: "test3")
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(note:)), name: .UIKeyboardWillChangeFrame, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
     }
     
     
@@ -105,8 +107,6 @@ extension ChatViewController {
     
     fileprivate func setupUI() {
     
-        
-        
         view.backgroundColor = .white
         view.addSubview(messageTable)
         view.addSubview(chatInputView)
@@ -117,9 +117,14 @@ extension ChatViewController {
     }
 }
 
-// MARK: method
+// MARK: method处理键盘事件
 extension ChatViewController {
-
+    
+    fileprivate func addNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(note:)), name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+    }
+    
     /// 监听键盘事件 改变table 和 输入框的位置
     @objc fileprivate func keyboardWillChangeFrame(note : NSNotification) {
         
@@ -167,6 +172,20 @@ extension ChatViewController {
     }
 }
 
+// MARK: 发送接收消息
+extension ChatViewController {
+
+    fileprivate func sendTextMessage(_ messageText: String) {
+        let textContent = JMSGTextContent(text: messageText)
+        guard let textMessage = conversation.createMessage(with: textContent) else { return }
+        conversation.send(textMessage)
+        messagesArr.append(textMessage)
+        tableViewReloadData()
+    }
+    
+    
+}
+
 
 // MARK: 数据
 extension ChatViewController {
@@ -175,10 +194,19 @@ extension ChatViewController {
         
         let messagesArr = conversation.messageArrayFromNewest(withOffset: nil, limit: nil)
         
-        self.messagesArr += messagesArr
-        
+        self.messagesArr += messagesArr.reversed()
+
+        tableViewReloadData()
+    }
+    
+    fileprivate func tableViewReloadData() {
+        tableViewScrollToBottom()
         messageTable.reloadData()
-        
+    }
+    
+    fileprivate func tableViewScrollToBottom() {
+
+        messageTable.setContentOffset(CGPoint(x: 0, y: CGFloat(MAXFLOAT)), animated: false)
     }
 }
 
@@ -205,7 +233,6 @@ extension ChatViewController : UITableViewDataSource {
             return cell
         }
         
-        
     }
 }
 
@@ -214,6 +241,8 @@ extension ChatViewController : ChatInputViewDelegate {
     func chatInputViewAction(_ inputView: ChatInputView, actionType: ChatInputViewActionType, isUP: Bool) {
         if actionType == .add {
             inputViewChangedFrame(isUP: isUP)
+        }else if actionType == .send {
+            sendTextMessage(inputView.textView.text)
         }
     }
     
@@ -223,20 +252,69 @@ extension ChatViewController : ChatInputViewDelegate {
 extension ChatViewController : ChatMoreViewDelegate {
 
     func chatMoreViewClick(_ moreView: ChatMoreView, type: ChatMoreViewActionType) {
+        
         if type == .photo {
-            let picker = TZImagePickerController(maxImagesCount: 9, columnNumber: 3, delegate: self)
-            present(picker!, animated: true, completion: nil)
             
+            if !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                //ShowTip.showHudTip(tipStr: "相册不可用")
+                return
+            }
+            
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.delegate = self
+            picker.isEditing = true
+            present(picker, animated: true, completion: nil)
+            
+        }else {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            picker.isEditing = true
+            present(picker, animated: true, completion: nil)
         }
     }
 }
 
-extension ChatViewController : TZImagePickerControllerDelegate {
+// MARK: 相机代理
+extension ChatViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            return
+        }
+        
+        print(image)
+        
+//        imagesArr.append(image)
+//        picCollecV.imagesArr = imagesArr
+        picker.dismiss(animated: true, completion: nil)
         
     }
 
 }
 
+// MARK: 消息监听
+extension ChatViewController : JMessageDelegate {
+
+    func onReceive(_ message: JMSGMessage!, error: Error!) {
+        if error != nil {
+            return
+        }
+        
+//        if message.contentType == .text {
+//            
+//        }
+        
+        messagesArr.append(message)
+        tableViewReloadData()
+    }
+}
 
