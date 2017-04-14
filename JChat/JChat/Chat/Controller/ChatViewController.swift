@@ -23,6 +23,7 @@
 import UIKit
 import SnapKit
 import Sugar
+import IQKeyboardManagerSwift
 
 fileprivate let kChatTableViewLeftCellID = "kChatTableViewLeftCellID"
 fileprivate let kChatTableViewRightCellID = "kChatTableViewRightCellID"
@@ -79,8 +80,20 @@ class ChatViewController: UIViewController {
         // 直接发送文字消息
         //JMSGMessage.sendSingleTextMessage("呵呵哈哈哈看花见花开很看好看很好好看", toUser: "test3")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(note:)), name: .UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
-        
+    }
+    
+    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        IQKeyboardManager.sharedManager().enable = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = true
     }
 
 }
@@ -91,26 +104,45 @@ extension ChatViewController {
     
     fileprivate func setupUI() {
     
+        
+        
         view.backgroundColor = .white
         view.addSubview(messageTable)
         view.addSubview(chatInputView)
         view.addSubview(moreView)
         
         view.backgroundColor = kDefault_BackgroundColor
+        
     }
 }
 
 // MARK: method
 extension ChatViewController {
 
+    /// 监听键盘事件 改变table 和 输入框的位置
+    @objc fileprivate func keyboardWillChangeFrame(note : NSNotification) {
+        
+        let dict = note.userInfo!
+        let duration =  dict[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
+        let endFrame = (dict[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        //偏移输入框和table
+        UIView.animate(withDuration: duration) {
+            self.chatInputView.y = endFrame.origin.y - kTabBar_Height
+            self.messageTable.y = -kScreen_Height + endFrame.origin.y
+        }
+
+    }
+    
+    /// 如果moreView当前显示在, 点击输入框, 这个时候去隐藏moreView
     @objc fileprivate func keyboardDidShow() {
-       
-        if chatInputView.addBtn.isSelected {
-            chatInputView.addBtn.isSelected = false
+    
+        if self.chatInputView.addBtn.isSelected {
+            self.chatInputView.addBtn.isSelected = false
             inputViewChangedFrame(isUP: false)
         }
     }
     
+    /// moreView的显示与隐藏
     fileprivate func inputViewChangedFrame(isUP : Bool) {
         
         UIView.animate(withDuration: kFrameChangeDuration) {
