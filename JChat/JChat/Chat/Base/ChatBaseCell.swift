@@ -12,14 +12,12 @@ class ChatBaseCell: UITableViewCell {
 
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var messageLab: UILabel!
-    
-    @IBOutlet weak var messageLabWidthCons: NSLayoutConstraint!
+   // @IBOutlet weak var contentImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        messageLabWidthCons.constant = kScreen_Width  - (15 + 50 + 16) * 2
     }
 
   
@@ -32,7 +30,6 @@ class ChatBaseCell: UITableViewCell {
                     self.icon.image = UIImage(data: data)
                 }
                 
-                
             }
             
             if message.contentType == .text {
@@ -40,6 +37,16 @@ class ChatBaseCell: UITableViewCell {
                 messageLab.text = content.text
             }
             
+//            if message.contentType == .image {
+//                guard let content = message.content as? JMSGImageContent else { return  }
+//                content.thumbImageData({[weak self] (data, objectId, error) in
+//                    if data != nil {
+//                        self?.contentImg.image = UIImage(data: data!)
+//                        
+////                        print(data!)
+//                    }
+//                })
+//            }
         }
     }
 }

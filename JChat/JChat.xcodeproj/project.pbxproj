@@ -40,6 +40,10 @@
 		86B8444F1E9CDD7800EDDC18 /* MessageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B8444D1E9CDD7800EDDC18 /* MessageListCell.swift */; };
 		86B844501E9CDD7800EDDC18 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B8444E1E9CDD7800EDDC18 /* MessageListCell.xib */; };
 		86DF6F341E9CC369000745E4 /* 161024214104.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86DF6F331E9CC369000745E4 /* 161024214104.jpg */; };
+		86FC9AC91EA465D900775EB9 /* ChatLeftImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC9AC71EA465D900775EB9 /* ChatLeftImageCell.swift */; };
+		86FC9ACA1EA465D900775EB9 /* ChatLeftImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86FC9AC81EA465D900775EB9 /* ChatLeftImageCell.xib */; };
+		86FC9ACD1EA46DFD00775EB9 /* ChatRightImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC9ACB1EA46DFD00775EB9 /* ChatRightImageCell.swift */; };
+		86FC9ACE1EA46DFD00775EB9 /* ChatRightImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86FC9ACC1EA46DFD00775EB9 /* ChatRightImageCell.xib */; };
 		86FF71DC1E9F18F600EF945A /* ChatLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FF71DA1E9F18F600EF945A /* ChatLeftTableViewCell.swift */; };
 		86FF71DD1E9F18F600EF945A /* ChatLeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86FF71DB1E9F18F600EF945A /* ChatLeftTableViewCell.xib */; };
 		86FF71E01E9F4D4F00EF945A /* ChatRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FF71DE1E9F4D4F00EF945A /* ChatRightTableViewCell.swift */; };
@@ -86,6 +90,10 @@
 		86B8444D1E9CDD7800EDDC18 /* MessageListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListCell.swift; sourceTree = "<group>"; };
 		86B8444E1E9CDD7800EDDC18 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
 		86DF6F331E9CC369000745E4 /* 161024214104.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 161024214104.jpg; sourceTree = "<group>"; };
+		86FC9AC71EA465D900775EB9 /* ChatLeftImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLeftImageCell.swift; sourceTree = "<group>"; };
+		86FC9AC81EA465D900775EB9 /* ChatLeftImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatLeftImageCell.xib; sourceTree = "<group>"; };
+		86FC9ACB1EA46DFD00775EB9 /* ChatRightImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRightImageCell.swift; sourceTree = "<group>"; };
+		86FC9ACC1EA46DFD00775EB9 /* ChatRightImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatRightImageCell.xib; sourceTree = "<group>"; };
 		86FF71DA1E9F18F600EF945A /* ChatLeftTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLeftTableViewCell.swift; sourceTree = "<group>"; };
 		86FF71DB1E9F18F600EF945A /* ChatLeftTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatLeftTableViewCell.xib; sourceTree = "<group>"; };
 		86FF71DE1E9F4D4F00EF945A /* ChatRightTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRightTableViewCell.swift; sourceTree = "<group>"; };
@@ -224,6 +232,10 @@
 				86FF71DB1E9F18F600EF945A /* ChatLeftTableViewCell.xib */,
 				86FF71DE1E9F4D4F00EF945A /* ChatRightTableViewCell.swift */,
 				86FF71DF1E9F4D4F00EF945A /* ChatRightTableViewCell.xib */,
+				86FC9AC71EA465D900775EB9 /* ChatLeftImageCell.swift */,
+				86FC9AC81EA465D900775EB9 /* ChatLeftImageCell.xib */,
+				86FC9ACB1EA46DFD00775EB9 /* ChatRightImageCell.swift */,
+				86FC9ACC1EA46DFD00775EB9 /* ChatRightImageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -364,11 +376,13 @@
 				86FF71DD1E9F18F600EF945A /* ChatLeftTableViewCell.xib in Resources */,
 				860AD78F1E9CA55F00A8E01B /* LaunchScreen.storyboard in Resources */,
 				86DF6F341E9CC369000745E4 /* 161024214104.jpg in Resources */,
+				86FC9ACE1EA46DFD00775EB9 /* ChatRightImageCell.xib in Resources */,
 				860AD78C1E9CA55F00A8E01B /* Assets.xcassets in Resources */,
 				86B844491E9CDC2600EDDC18 /* RecycleHeaderView.xib in Resources */,
 				860617BA1E9F611F00F9CFD4 /* ChatInputView.xib in Resources */,
 				86B661971EA0665200AAEA55 /* ChatMoreViewCell.xib in Resources */,
 				86B844501E9CDD7800EDDC18 /* MessageListCell.xib in Resources */,
+				86FC9ACA1EA465D900775EB9 /* ChatLeftImageCell.xib in Resources */,
 				86FF71E11E9F4D4F00EF945A /* ChatRightTableViewCell.xib in Resources */,
 				86B8444B1E9CDC2600EDDC18 /* RecycleViewCell.xib in Resources */,
 				860AD78A1E9CA55F00A8E01B /* Main.storyboard in Resources */,
@@ -439,8 +453,10 @@
 				86B8444F1E9CDD7800EDDC18 /* MessageListCell.swift in Sources */,
 				86B661961EA0665200AAEA55 /* ChatMoreViewCell.swift in Sources */,
 				86B8442B1E9CD91900EDDC18 /* ChatViewController.swift in Sources */,
+				86FC9AC91EA465D900775EB9 /* ChatLeftImageCell.swift in Sources */,
 				86B844421E9CDC2600EDDC18 /* String-Extension.swift in Sources */,
 				86FF71E01E9F4D4F00EF945A /* ChatRightTableViewCell.swift in Sources */,
+				86FC9ACD1EA46DFD00775EB9 /* ChatRightImageCell.swift in Sources */,
 				86B8444C1E9CDC2600EDDC18 /* YYTitleView.swift in Sources */,
 				86B661931EA0654F00AAEA55 /* ChatMoreView.swift in Sources */,
 				86B844411E9CDC2600EDDC18 /* SearchBar.swift in Sources */,

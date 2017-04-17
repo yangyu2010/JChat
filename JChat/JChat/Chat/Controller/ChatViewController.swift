@@ -27,6 +27,8 @@ import IQKeyboardManagerSwift
 
 fileprivate let kChatTableViewLeftCellID = "kChatTableViewLeftCellID"
 fileprivate let kChatTableViewRightCellID = "kChatTableViewRightCellID"
+fileprivate let kChatTableViewLeftImageCell = "kChatTableViewLeftImageCell"
+fileprivate let kChatTableViewRightImageCell = "kChatTableViewRightImageCell"
 fileprivate let kMoreViewHeight : CGFloat = 80
 fileprivate let kFrameChangeDuration : TimeInterval = 0.25
 
@@ -48,6 +50,8 @@ class ChatViewController: UIViewController {
         messageTable.dataSource = self
         messageTable.register(UINib(nibName: "ChatLeftTableViewCell", bundle: nil), forCellReuseIdentifier: kChatTableViewLeftCellID)
         messageTable.register(UINib(nibName: "ChatRightTableViewCell", bundle: nil), forCellReuseIdentifier: kChatTableViewRightCellID)
+        messageTable.register(UINib(nibName: "ChatLeftImageCell", bundle: nil), forCellReuseIdentifier: kChatTableViewLeftImageCell)
+        messageTable.register(UINib(nibName: "ChatRightImageCell", bundle: nil), forCellReuseIdentifier: kChatTableViewRightImageCell)
         messageTable.separatorStyle = .none
         messageTable.rowHeight = UITableViewAutomaticDimension
         messageTable.estimatedRowHeight = 150.0
@@ -183,7 +187,18 @@ extension ChatViewController {
         tableViewReloadData()
     }
     
+    fileprivate func sendImageMessage(_ image : UIImage) {
     
+        guard let imageMessage = JMSGImageContent(imageData: UIImagePNGRepresentation(image)!) else { return }
+        
+        guard let message = conversation.createMessage(with: imageMessage) else { return }
+        
+        conversation.send(message)
+        
+        messagesArr.append(message)
+        
+        tableViewReloadData()
+    }
 }
 
 
@@ -220,17 +235,30 @@ extension ChatViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let message = messagesArr[indexPath.item]
+
         if message.isReceived {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewLeftCellID, for: indexPath) as! ChatLeftTableViewCell
-            cell.message = message
-            return cell
-            
+            if message.contentType == .image {
+                let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewLeftImageCell, for: indexPath) as! ChatLeftImageCell
+                cell.message = message
+                return cell
+                
+            }else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewLeftCellID, for: indexPath) as! ChatLeftTableViewCell
+                cell.message = message
+                return cell
+            }
         }else {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewRightCellID, for: indexPath) as! ChatRightTableViewCell
-            cell.message = message
-            return cell
+            if message.contentType == .image {
+                let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewRightImageCell, for: indexPath) as! ChatRightImageCell
+                cell.message = message
+                return cell
+                
+            }else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: kChatTableViewRightCellID, for: indexPath) as! ChatRightTableViewCell
+                cell.message = message
+                return cell
+            }
+
         }
         
     }
@@ -291,7 +319,9 @@ extension ChatViewController : UIImagePickerControllerDelegate, UINavigationCont
             return
         }
         
-        print(image)
+//        print(image)
+        
+        self.sendImageMessage(image)
         
 //        imagesArr.append(image)
 //        picCollecV.imagesArr = imagesArr

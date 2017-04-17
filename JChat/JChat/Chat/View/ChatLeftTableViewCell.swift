@@ -11,10 +11,14 @@ import UIKit
 class ChatLeftTableViewCell: ChatBaseCell {
 
     //@IBOutlet weak var messageLabWidthCons: NSLayoutConstraint!
+    @IBOutlet weak var messageLabWidthCons: NSLayoutConstraint!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        messageLabWidthCons.constant = kScreen_Width  - (15 + 50 + 16) * 2
     }
 
+    
 }

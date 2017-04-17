@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="363" height="87"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="363" height="87"/>
+                <rect key="frame" x="0.0" y="0.0" width="363" height="86.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_sq" translatesAutoresizingMaskIntoConstraints="NO" id="y9c-xO-D4Q">
@@ -23,12 +23,6 @@
                             <constraint firstAttribute="width" constant="50" id="7d4-ne-kPL"/>
                             <constraint firstAttribute="height" constant="50" id="IfO-l8-f4t"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="25"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_left" translatesAutoresizingMaskIntoConstraints="NO" id="7jo-9p-aJP">
                         <rect key="frame" x="69" y="23" width="178" height="40"/>
