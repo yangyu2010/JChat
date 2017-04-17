@@ -52,7 +52,7 @@
                     <constraint firstItem="kWM-ga-411" firstAttribute="leading" secondItem="7jo-9p-aJP" secondAttribute="leading" constant="16" id="yAf-3A-FgD"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="deviceRGB"/>
             <connections>
                 <outlet property="icon" destination="y9c-xO-D4Q" id="Deo-2n-gh2"/>
                 <outlet property="messageLab" destination="kWM-ga-411" id="yCp-bk-TyC"/>

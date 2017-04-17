@@ -40,7 +40,7 @@
                     <constraint firstAttribute="trailing" secondItem="d5z-Yp-Ofx" secondAttribute="trailing" constant="15" id="umR-IO-DYG"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="deviceRGB"/>
             <connections>
                 <outlet property="contentImg" destination="gRh-If-7ty" id="s0n-hf-5Dd"/>
                 <outlet property="icon" destination="d5z-Yp-Ofx" id="F4C-S0-8KG"/>

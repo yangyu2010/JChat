@@ -40,7 +40,7 @@
                     <constraint firstAttribute="bottom" secondItem="fhu-Ni-3yP" secondAttribute="bottom" constant="10" id="Wxx-Rm-9S3"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="deviceRGB"/>
             <connections>
                 <outlet property="contentImg" destination="fhu-Ni-3yP" id="wDC-14-ZjH"/>
                 <outlet property="icon" destination="oab-4d-LfT" id="UIW-JR-wbp"/>

@@ -87,6 +87,9 @@ class ChatViewController: UIViewController {
         /// 监听会话
         JMessage.add(self, with: self.conversation)
         
+        /// 清除未读数
+        conversation.clearUnreadCount()
+        
         /// 请求数据
         getPageMessage()
     }
@@ -103,6 +106,9 @@ class ChatViewController: UIViewController {
         IQKeyboardManager.sharedManager().enable = true
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 
@@ -221,6 +227,13 @@ extension ChatViewController {
     
     fileprivate func tableViewScrollToBottom() {
 
+        /*
+         if (self.dataSources.count == 0) return;
+         
+         NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:self.dataSources.count-1 inSection:0];
+         [self.tableView scrollToRowAtIndexPath:lastIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+         */
+        
         messageTable.setContentOffset(CGPoint(x: 0, y: CGFloat(MAXFLOAT)), animated: false)
     }
 }

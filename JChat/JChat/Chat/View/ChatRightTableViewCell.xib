@@ -52,7 +52,7 @@
                     <constraint firstItem="xtx-ao-MTE" firstAttribute="leading" secondItem="cJl-dK-PdQ" secondAttribute="leading" constant="8" id="tgL-Jh-7g3"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="deviceRGB"/>
             <connections>
                 <outlet property="icon" destination="PND-n4-QLy" id="4Mv-Xj-Xce"/>
                 <outlet property="messageLab" destination="xtx-ao-MTE" id="eEH-1N-CtB"/>

@@ -16,8 +16,10 @@ class ChatBaseCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
+        layer.drawsAsynchronously = true
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
     }
 
   
@@ -37,16 +39,6 @@ class ChatBaseCell: UITableViewCell {
                 messageLab.text = content.text
             }
             
-//            if message.contentType == .image {
-//                guard let content = message.content as? JMSGImageContent else { return  }
-//                content.thumbImageData({[weak self] (data, objectId, error) in
-//                    if data != nil {
-//                        self?.contentImg.image = UIImage(data: data!)
-//                        
-////                        print(data!)
-//                    }
-//                })
-//            }
         }
     }
 }
